@@ -1,17 +1,29 @@
 import $ from "jquery";
 import PointerLock from "./src/index";
 
-const element = document.body;
-const pointerlock = new PointerLock(element);
+const $element = $(".rectangle");
+const $info = $(".info");
+const pointerLock = new PointerLock($element);
 
-pointerlock.on("change", (isLocked) => {
-  console.log(`pointer is ${isLocked ? 'locked' : 'not locked'}`);
-});
+pointerLock
+  .on("unsupported", () => {
+    $info.addClass("error");
+    $info.text("pointer lock unsupported, please use another browser");
+  })
+  .on("change", (isLocked) => {
+    if (isLocked) {
+      $element.addClass("locked");
+    } else {
+      $element.removeClass("locked");
+    }
 
-$(element).on("click", () => {
-  pointerlock.requestPointerLock();
+    $info.removeClass("error");
+    $info.text(`pointer is ${isLocked ? 'locked' : 'not locked'}`);
+  }).on("error", (err) => {
+    $info.addClass("error");
+    $info.text(err.message);
+  });
 
-  setTimeout(() => {
-    pointerlock.exitPointerLock();
-  }, 3000);
+$element.on("click", () => {
+  pointerLock.requestPointerLock();
 });

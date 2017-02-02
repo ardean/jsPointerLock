@@ -1,6 +1,4 @@
-import {
-  EventEmitter
-} from "events";
+import { EventEmitter } from "events";
 import $ from "jquery";
 
 export default class PointerLock extends EventEmitter {
@@ -9,41 +7,62 @@ export default class PointerLock extends EventEmitter {
 
     this.$element = $(element);
     this.element = this.$element.get(0);
-    this.isLocked = this.getLockState();
 
-    $(document).on("pointerlockchange mozpointerlockchange, webkitpointerlockchange", this.pointerLockChange.bind(this));
-  }
+    $(document)
+      .on("pointerlockchange mozpointerlockchange webkitpointerlockchange", this.pointerLockChange.bind(this))
+      .on("pointerlockerror mozpointerlockerror webkitpointerlockerror", this.pointerLockError.bind(this));
 
-  getLockState() {
-    return this.getPointerLockElement() === this.element;
-  }
-
-  pointerLockChange() {
-    this.isLocked = this.getLockState();
-    this.emit("change", this.isLocked);
+    setTimeout(() => {
+      if (!this.isSupported) {
+        this.emit("unsupported");
+      }
+    }, 0);
   }
 
   requestPointerLock() {
     const element = this.element;
 
     if (element.requestPointerLock) {
-      element.requestPointerLock();
+      return element.requestPointerLock();
     } else if (element.mozRequestPointerLock) {
-      element.mozRequestPointerLock();
+      return element.mozRequestPointerLock();
+    } else if (element.webkitRequestPointerLock)  {
+      return element.webkitRequestPointerLock();
     }
   }
 
-  exitPointerLock() {
+  pointerLockChange(e) {
+    this.emit("change", this.isLocked, e);
+  }
+
+  pointerLockError(e) {
+    this.emit("error", new Error("pointer lock failed"), e);
+  }
+
+  get isLocked() {
+    return PointerLock.pointerLockElement === this.element;
+  }
+
+  static exitPointerLock() {
     if (document.exitPointerLock) {
-      document.exitPointerLock();
+      return document.exitPointerLock();
     } else if (document.mozExitPointerLock) {
-      document.mozExitPointerLock();
+      return document.mozExitPointerLock();
+    } else if (document.webkitExitPointerLock) {
+      return document.webkitExitPointerLock();
     }
   }
 
-  getPointerLockElement() {
+  static get pointerLockElement() {
     return document.pointerLockElement ||
       document.mozPointerLockElement ||
+      document.webkitPointerLockElement ||
       null;
+  }
+
+  static get isSupported() {
+    return "pointerLockElement" in document ||
+      "mozPointerLockElement" in document ||
+      "webkitPointerLockElement" in document;
   }
 }
