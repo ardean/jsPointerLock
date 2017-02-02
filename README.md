@@ -39,7 +39,7 @@ $(element).on("click", () => {
     - _isLocked_ => **Boolean**
   - **Static Properties**
     - _isSupported_ => **Boolean**
-    - _pointerLockElement_ => **Boolean**
+    - _pointerLockElement_ => **Element**
   - **Events**
     - _change_ => (**Boolean** _isLocked_, **Event** _e_)
     - _error_ => (**Error** _err_, **Event** _e_)
