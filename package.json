@@ -1,6 +1,6 @@
 {
   "name": "jspointerlock",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "W3C Pointer Lock Fallback",
   "main": "dist/jspointerlock.js",
   "scripts": {
