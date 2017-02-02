@@ -5,7 +5,9 @@
   "main": "dist/jspointerlock.js",
   "scripts": {
     "start": "http-server ./",
-    "build": "jspm build [src/**/*.js] dist/jspointerlock.js",
+    "build": "npm run build-src && npm run build-dependencies",
+    "build-src": "jspm build [src/**/*.js] dist/jspointerlock.js",
+    "build-dependencies": "jspm build src/**/*.js - [src/**/*.js] dist/dependencies.js",
     "build-docs": "jspm build index.js docs/index.js && cpy *.{html,css} docs/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
