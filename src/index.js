@@ -1,4 +1,4 @@
-import { EventEmitter } from "events";
+import EventEmitter from "events";
 import $ from "jquery";
 
 export default class PointerLock extends EventEmitter {
@@ -13,7 +13,7 @@ export default class PointerLock extends EventEmitter {
       .on("pointerlockerror mozpointerlockerror webkitpointerlockerror", this.pointerLockError.bind(this));
 
     setTimeout(() => {
-      if (!this.isSupported) {
+      if (!PointerLock.isSupported) {
         this.emit("unsupported");
       }
     }, 0);
