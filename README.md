@@ -12,17 +12,15 @@
 I suggest you to use [jspm](http://jspm.io/) as your package manager.
 
 ```js
-import $ from "jquery";
 import PointerLock from "jspointerlock";
 
-const element = document.body;
-const pointerLock = new PointerLock(element);
+const pointerLock = new PointerLock(document.body);
 
 pointerLock.on("change", (isLocked) => {
   console.log(`pointer is ${isLocked ? 'locked' : 'not locked'}`);
 });
 
-$(element).on("click", () => {
+pointerLock.element.addEventListener("click", () => {
   pointerLock.requestPointerLock();
 });
 ```
@@ -42,6 +40,7 @@ Please checkout the [index-dist.html](https://ardean.github.io/jsPointerLock/ind
   - **Static Members**
     - _exitPointerLock()_ => **Void**
   - **Properties**
+    - _element_ => **Element**
     - _isLocked_ => **Boolean**
   - **Static Properties**
     - _isSupported_ => **Boolean**
