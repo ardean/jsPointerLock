@@ -1,22 +1,31 @@
 {
   "name": "jspointerlock",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "W3C Pointer Lock Fallback",
-  "main": "dist/jspointerlock.js",
+  "main": "dist/jspointerlock.min.js",
+  "repository": "https://github.com/ardean/jsPointerLock",
+  "author": "ardean",
+  "license": "MIT",
+  "keywords": [
+    "pointer-lock",
+    "pointerlock",
+    "html5-pointer-lock",
+    "w3c-pointer-lock",
+    "fallback",
+    "jspointerlock",
+    "w3c",
+    "events",
+    "browser",
+    "jsremote"
+  ],
   "scripts": {
     "start": "http-server ./",
-    "build": "npm run build-src && npm run build-dependencies",
-    "build-src": "jspm build [src/**/*.js] dist/jspointerlock.js",
-    "build-dependencies": "jspm build src/**/*.js - [src/**/*.js] dist/dependencies.js",
+    "build": "npm run build-src && npm run build-src-min",
+    "build-src": "jspm build src/index.js dist/jspointerlock.js --externals jquery,events --format umd --global-name jsPointerLock --global-deps \"{'jquery':'$','events':'EventEmitter'}\"",
+    "build-src-min": "jspm build src/index.js dist/jspointerlock.min.js --externals jquery,events --format umd --global-name jsPointerLock --global-deps \"{'jquery':'$','events':'EventEmitter'}\" --minify --skip-source-maps",
     "build-docs": "jspm build index.js docs/index.js && cpy *.{html,css} docs/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ardean/jsPointerLock.git"
-  },
-  "author": "ardean",
-  "license": "MIT",
   "devDependencies": {
     "cpy-cli": "^1.0.1",
     "http-server": "^0.9.0",

@@ -1,15 +1,59 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('plugin-babel/babel-helpers/classCallCheck.js'), require('plugin-babel/babel-helpers/createClass.js'), require('plugin-babel/babel-helpers/possibleConstructorReturn.js'), require('plugin-babel/babel-helpers/inherits.js'), require('events'), require('jquery')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'plugin-babel/babel-helpers/classCallCheck.js', 'plugin-babel/babel-helpers/createClass.js', 'plugin-babel/babel-helpers/possibleConstructorReturn.js', 'plugin-babel/babel-helpers/inherits.js', 'events', 'jquery'], factory) :
-  (factory((global.[src = global.[src || {}),global._classCallCheck,global._createClass,global._possibleConstructorReturn,global._inherits,global.EventEmitter,global.$));
-}(this, (function (exports,_classCallCheck,_createClass,_possibleConstructorReturn,_inherits,EventEmitter,$) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('events'), require('jquery')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'events', 'jquery'], factory) :
+  (factory((global.jsPointerLock = global.jsPointerLock || {}),global.EventEmitter,global.$));
+}(this, (function (exports,EventEmitter,$) { 'use strict';
 
-_classCallCheck = 'default' in _classCallCheck ? _classCallCheck['default'] : _classCallCheck;
-_createClass = 'default' in _createClass ? _createClass['default'] : _createClass;
-_possibleConstructorReturn = 'default' in _possibleConstructorReturn ? _possibleConstructorReturn['default'] : _possibleConstructorReturn;
-_inherits = 'default' in _inherits ? _inherits['default'] : _inherits;
 EventEmitter = 'default' in EventEmitter ? EventEmitter['default'] : EventEmitter;
 $ = 'default' in $ ? $['default'] : $;
+
+var _classCallCheck = (function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+});
+
+var _createClass = (function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+})();
+
+var _possibleConstructorReturn = (function (self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return call && (typeof call === "object" || typeof call === "function") ? call : self;
+});
+
+var _inherits = (function (subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      enumerable: false,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+});
 
 var PointerLock = function (_EventEmitter) {
   _inherits(PointerLock, _EventEmitter);
@@ -87,6 +131,7 @@ var PointerLock = function (_EventEmitter) {
 }(EventEmitter);
 
 exports['default'] = PointerLock;
+exports.PointerLock = PointerLock;
 
 Object.defineProperty(exports, '__esModule', { value: true });
 

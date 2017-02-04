@@ -66,3 +66,5 @@ export default class PointerLock extends EventEmitter {
       "webkitPointerLockElement" in document;
   }
 }
+
+export { PointerLock };

@@ -9,6 +9,8 @@
 
 ## Usage
 
+I suggest you to use [jspm](http://jspm.io/) as your package manager.
+
 ```js
 import $ from "jquery";
 import PointerLock from "jspointerlock";
@@ -24,6 +26,10 @@ $(element).on("click", () => {
   pointerLock.requestPointerLock();
 });
 ```
+
+### Directly in a browser
+
+Please checkout the [index-dist.html](index-dist.html) file for direct usage in a browser.
 
 ## API
 
