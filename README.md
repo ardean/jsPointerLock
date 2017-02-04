@@ -1,6 +1,7 @@
 # jsPointerLock
 [![NPM Version][npm-image]][npm-url]
 [![NPM Downloads][downloads-image]][downloads-url]
+[![License][license-image]][license-url]
 
 **W3C Pointer Lock Fallback**
 
@@ -59,3 +60,5 @@ Please checkout the [index-dist.html](https://ardean.github.io/jsPointerLock/ind
 [npm-url]: https://npmjs.org/package/jspointerlock
 [downloads-image]: https://img.shields.io/npm/dm/jspointerlock.svg
 [downloads-url]: https://npmjs.org/package/jspointerlock
+[license-image]: https://img.shields.io/npm/l/jspointerlock.svg
+[license-url]: LICENSE
