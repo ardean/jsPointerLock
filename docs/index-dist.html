@@ -4,6 +4,15 @@
 <head>
   <title>jsPointerLock using dist-file</title>
   <meta charset="utf-8">
+  <style media="screen">
+    html {
+      background-color: #CCCCCC;
+    }
+
+    html.locked {
+      background-color: #CCFFCC;
+    }
+  </style>
 </head>
 
 <body>
@@ -15,6 +24,7 @@
       .PointerLock(document.documentElement)
       .on("change", function (isLocked) {
         console.info("PointerLock-LockedState: " + isLocked);
+        pointerLock.$element.toggle("locked");
       });
 
     $(pointerLock.element).on("click", function () {
