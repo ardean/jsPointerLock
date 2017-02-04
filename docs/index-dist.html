@@ -24,7 +24,7 @@
       .PointerLock(document.documentElement)
       .on("change", function (isLocked) {
         console.info("PointerLock-LockedState: " + isLocked);
-        pointerLock.$element.toggle("locked");
+        pointerLock.$element.toggleClass("locked");
       });
 
     $(pointerLock.element).on("click", function () {
