@@ -24,6 +24,7 @@
     "build-src": "jspm build src/index.js dist/jspointerlock.js --externals jquery,events --format umd --global-name jsPointerLock --global-deps \"{'jquery':'$','events':'EventEmitter'}\"",
     "build-src-min": "jspm build src/index.js dist/jspointerlock.min.js --externals jquery,events --format umd --global-name jsPointerLock --global-deps \"{'jquery':'$','events':'EventEmitter'}\" --minify --skip-source-maps",
     "build-docs": "jspm build index.js docs/index.js && cpy *.{html,css} docs/",
+    "build-docs-dist": "cpy dist/jspointerlock.min.js docs/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
