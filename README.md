@@ -29,7 +29,7 @@ $(element).on("click", () => {
 
 ### Directly in a browser
 
-Please checkout the [index-dist.html](index-dist.html) file for direct usage in a browser.
+Please checkout the [index-dist.html](docs/index-dist.html) file for direct usage in a browser.
 
 ## API
 
