@@ -1,4 +1,6 @@
 # jsPointerLock
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/ardean/jsPointerLock.svg)](https://greenkeeper.io/)
 [![NPM Version][npm-image]][npm-url]
 [![NPM Downloads][downloads-image]][downloads-url]
 [![License][license-image]][license-url]
